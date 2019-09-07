@@ -1,0 +1,321 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Media facoltativo da visualizzare sopra la domanda."
+        }
+      ]
+    },
+    {
+      "label": "Contenuto dello spazio vuoto",
+      "fields": [
+        {
+          "label": "Descrizione del compito",
+          "default": "Inserisci le parole mancanti.",
+          "description": "Una guida che spiega all'utente come rispondere a questo compito."
+        },
+        {
+          "label": "Testo con spazi vuoti",
+          "important": {
+            "description": "<ul><li>Gli spazi vuoti devono essere marcati con __________ (tre o più underscore).</li><li>Non mettere le soluzioni nel testo.</li></ul>"
+          },
+          "description": "",
+          "font": {}
+        },
+        {
+          "label": "Spazi vuoti usati nel testo",
+          "entity": "spazio vuoto",
+          "widgets": [
+            {
+              "label": "Predefinito"
+            }
+          ],
+          "field": {
+            "label": "Spazio vuoto",
+            "fields": [
+              {
+                "label": "Risposta giusta",
+                "description": "Puoi separare le alternative di risposta con una barra (/)."
+              },
+              {
+                "label": "Suggerimento"
+              },
+              {
+                "label": "Risposta sbagliata",
+                "entity": "risposta sbagliata",
+                "field": {
+                  "label": "Risposta sbagliata",
+                  "description": "Puoi separare le alternative di risposta con una barra (/).",
+                  "fields": [
+                    {
+                      "label": "Testo della risposta sbagliata"
+                    },
+                    {
+                      "label": "Feedback",
+                      "description": "Il feedback dovrebbe aiutare l'utente a trovare la risposta giusta e, idealmente, essere su misura della risposta che l'utente ha inserito."
+                    },
+                    {
+                      "label": "Evidenzia il testo quando è mostrato il feedback",
+                      "description": "Metti !! prima e dopo una porzione di testo per marcarlo come evidenziatura. (es. Questè testo è !!in evidenza!!)"
+                    },
+                    {
+                      "label": "Evidenzia una posizione relativa a uno spazio vuoto:",
+                      "showWhen": {
+                        "rules": [
+                          {}
+                        ]
+                      },
+                      "options": [
+                        {
+                          "label": "- 1 (appena prima dello spazio vuoto)"
+                        },
+                        {
+                          "label": "- 2 (due evidenziature prima dello spazio vuoto)"
+                        },
+                        {
+                          "label": "- 3 (tre evidenziature prima dello spazio vuoto)"
+                        },
+                        {
+                          "label": "+ 1 (subito dopo lo spazio vuoto)"
+                        },
+                        {
+                          "label": "+ 2 (due evidenziature dopo lo spazio vuoto)"
+                        },
+                        {
+                          "label": "+ 3 (tre evidenziature dopo lo spazio vuoto)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Snippet",
+      "fields": [
+        {
+          "label": "Lista degli snippet",
+          "description": "Gli snippet sono porzioni di testo che possono essere riusate nei testi di feedback inserendoci @snippetname all'interno.",
+          "entity": "snippet",
+          "field": {
+            "label": "Snippet",
+            "fields": [
+              {
+                "label": "Nome",
+                "description": "Per il nome dello snippet puoi usare soltanto lettere e numeri.",
+                "regexp": {}
+              },
+              {
+                "label": "Testo"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Feedback generale",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predefinito"
+            }
+          ],
+          "label": "Definisci un feedback personalizzato per ogni intervallo di punteggio",
+          "description": "Clicca sul pulsante \"Aggiungi intervallo\" per aggiungere quanti intervalli ti servono. Esempio: 0-20% Cattivo punteggio, 21-91% Punteggio medio, 91-100% Punteggio fantastico!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervallo di punteggio"
+              },
+              {},
+              {
+                "label": "Feedback per un intervallo definito di punteggio",
+                "placeholder": "Inserisci il feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Impostazioni di esecuzione",
+      "description": "Queste opzioni ti permettono di regolare il comportamento del compito.",
+      "fields": [
+        {
+          "label": "Modalità di risposta",
+          "description": "Indica in che modo l'utente risponde.",
+          "options": [
+            {
+              "label": "Gli utenti selezionano da opzioni."
+            },
+            {
+              "label": "Gli utenti digitano le risposte."
+            }
+          ],
+          "default": "digitando"
+        },
+        {
+          "label": "Alternative date per la selezione",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          },
+          "options": [
+            {
+              "label": "Le risposte sbagliate inserite nello spazio vuoto"
+            },
+            {
+              "label": "Le risposte giuste di tutti gli altri spazi vuoti"
+            }
+          ],
+          "default": "alternative"
+        },
+        {
+          "label": "Numero massimo di alternative degli altri spazi vuoti dati per la selezione",
+          "description": "Inserisci 0 per impostare nessun limite.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Impostazione per quando l'utente commette un errore di scrittura",
+          "options": [
+            {
+              "label": "Accettala come risposta giusta"
+            },
+            {
+              "label": "Avverti l'utente dell'errore"
+            },
+            {
+              "label": "Consideralo un normale errore"
+            }
+          ],
+          "default": "errore",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Case sensitive",
+          "description": "Se attivato, maiuscole o minuscole diverse dalla soluzione sono considerate errore.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Verifica automaticamente le risposte dopo l'immissione"
+        },
+        {
+          "label": "Attiva il pulsante \"Mostra soluzione\""
+        },
+        {
+          "label": "Richiede tutte le risposte prima di mostrare la soluzione"
+        },
+        {
+          "label": "Attiva \"Riprova\""
+        },
+        {
+          "label": "Attiva il pulsante \"Verifica\""
+        },
+        {
+          "label": "Disattiva lo zoom di immagine per domande basate su immagini"
+        },
+        {
+          "label": "Mostra la finestra di dialogo \"Verifica\"",
+          "description": "Questa opzione non è compatibile con quella di \"Verifica automaticamente le risposte dopo l'immissione\""
+        },
+        {
+          "label": "Mostra la finestra di dialogo \"Riprova\""
+        }
+      ]
+    },
+    {
+      "label": "Testo del pulsante \"Mostra soluzioni\"",
+      "default": "Mostra soluzioni"
+    },
+    {
+      "label": "Testo del pulsante \"Riprova\"",
+      "default": "Riprova"
+    },
+    {
+      "label": "Testo del pulsante \"Verifica\"",
+      "default": "Verifica"
+    },
+    {
+      "label": "Testo del messaggio \"Non compilato\"",
+      "default": "Per favore, riempi tutti gli spazi vuoti per vedere la soluzione"
+    },
+    {
+      "label": "Etichetta per l'icona dei suggerimenti",
+      "default": "Suggerimento"
+    },
+    {
+      "label": "Avvertimento di errore di scrittura",
+      "description": "Questo messaggio viene mostrato agli utenti che fanno un errore di scrittura. Inserisci @mistake per mostrare loro dove hanno sbagliato.",
+      "default": "Controlla la tua scrittura: @mistake"
+    },
+    {
+      "label": "Finestra di dialogo per la conferma di verifica",
+      "fields": [
+        {
+          "label": "Titolo del testo",
+          "default": "Finito?"
+        },
+        {
+          "label": "Corpo del testo",
+          "default": "Sei sicuro di aver finito?"
+        },
+        {
+          "label": "Etichetta del pulsante di cancellazione",
+          "default": "Cancella"
+        },
+        {
+          "label": "Etichetta del pulsante di conferma",
+          "default": "Finito"
+        }
+      ]
+    },
+    {
+      "label": "Finestra di dialogo per confermare la riprova",
+      "fields": [
+        {
+          "label": "Titolo del testo",
+          "default": "Vuoi riprovare?"
+        },
+        {
+          "label": "Corpo del testo",
+          "default": "Sei sicuro di voler riprovare?"
+        },
+        {
+          "label": "Etichetta del pulsante di cancellazione",
+          "default": "Cancella"
+        },
+        {
+          "label": "Etichetta del pulsante di conferma",
+          "default": "Conferma"
+        }
+      ]
+    },
+    {
+      "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
+      "default": "Il tuo punteggio è :num su :total"
+    }
+  ]
+}
